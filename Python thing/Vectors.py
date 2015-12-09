@@ -5,69 +5,57 @@ class Vector2():
 				self.x = ax
 				self.y = ay
 				
-				
+		#This is the print fuction for Vector 2		
 		def printer(self):
-				print(self.x,",",self.y)
+				print(self.x,self.y)
+		#This is the Addition fuction for Vector 2
 		def __add__(self, thing):
 				result = Vector2(0,0)
 				result.x = self.x + thing.x
 				result.y = self.y + thing.y
 				return result
-			
+		#This is the Subtraction fuction for Vector 2	
 		def __sub__(self, thing):
 				result = Vector2(0,0)
 				result.x = self.x - thing.x
 				result.y = self.y - thing.y
 				return result
-		
+		#This is the Multipication fuction for Vector 2
 		def __mul__(self, thing):
 				result = Vector2(0,0)
 				result.x = self.x * thing.x
 				result.y = self.y * thing.y
 				return result
-			    
+		#This is the Magnitude fuction for Vector 2	    
 		def Mag(self):
 				result = Vector2(0,0)
-				result.x = self.x ^ 2
-				result.y = self.y ^ 2
-				newresult = sqrt(result.x + result.y)
+				newresult = sqrt((self.x * self.x) + (self.y * self.y))
 				return newresult
-
+		#This is the Normilization fuction for Vector 2
+		def Norm(self):
+				result = Vector2(0,0)
+				magresult = sqrt((self.x * self.x) + (self.y * self.y))
+				result.x = self.x/magresult
+				result.y = self.y/magresult
+				return result
+		#This is the Dot Product fuction for Vector 2
 		def DProd(self,thing):
 				result = Vector2(0,0)
 				result.x = self.x * thing.x
 				result.y = self.y * thing.y
 				newresult = (self.x * thing.x) + (self.y * thing.y)
 				return newresult
+		def lerp(self, thing):
+				result = Vector2(0,0)
+				result.x = self.x + 0.5 * (thing.x - self.x)
+				result.y = self.y + 0.5 * (thing.y - self.y)
+				return result
+
 			    
 
 				
 				
-a = Vector2(2,4)
-b = Vector2(6,9)
-c = Vector2(0,0)
 
-
-print("Vector 1 consists of (2,4)")
-print("Vector 2 consists of (6,9)")
-print(" ")
-c = a + b
-print("Vector 1 + Vector 2 = ")
-c.printer()
-
-c = a - b
-print("Vector 1 - Vector 2 = ")
-c.printer()
-
-c = a * b
-print("Vector 1 * Vector 2 = ")
-c.printer()
-
-print("Vector 1's magnitude is ",a.Mag())
-print("Vector 2's magnitude is ",b.Mag())
-
-print("Vector 1's Dot Product is ",a.DProd(b))
-print("Vector 2's Dot Product is ",b.DProd(b))
 
 
 class Vector3():
@@ -75,38 +63,47 @@ class Vector3():
 				self.x = ax
 				self.y = ay
 				self.z = az
-				
+		#This is the print fuction for Vector 3		
 		def printer(self):
-				print(self.x,",",self.y,",",self.z)
+				print(self.x, self.y, self.z)
+		#This is the Addition fuction for Vector 3	
 		def __add__(self, thing):
 				result = Vector3(0,0,0)
 				result.x = self.x + thing.x
 				result.y = self.y + thing.y
 				result.z = self.z + thing.z
 				return result
-			
+		#This is the Subraction fuction for Vector 3		
 		def __sub__(self, thing):
 				result = Vector3(0,0,0)
 				result.x = self.x - thing.x
 				result.y = self.y - thing.y
 				result.z = self.z - thing.z
 				return result
-		
+		#This is the Multiplication fuction for Vector 3	
 		def __mul__(self, thing):
 				result = Vector3(0,0,0)
 				result.x = self.x * thing.x
 				result.y = self.y * thing.y
 				result.z = self.z * thing.z
 				return result
-			    
+		#This is the Magnitute fuction for Vector 3		    
 		def Mag(self):
 				result = Vector3(0,0,0)
-				result.x = self.x ^ 2
-				result.y = self.y ^ 2
-				result.z = self.z ^ 2
+				result.x = self.x * self.x
+				result.y = self.y * self.y
+				result.z = self.z * self.z
 				newresult = sqrt(result.x + result.y + result.z)
 				return newresult
-
+		#This is the Normalization fuction for Vector 3	
+		def Norm(self):
+				result = Vector3(0,0,0)
+				magresult = sqrt((self.x * self.x) + (self.y * self.y) + (self.z * self.z))
+				result.x = self.x/magresult
+				result.y = self.y/magresult
+				result.z = self.z/magresult
+				return result
+		#This is the Dot product fuction for Vector 3	
 		def DProd(self,thing):
 				result = Vector3(0,0,0)
 				result.x = self.x * thing.x
@@ -114,52 +111,29 @@ class Vector3():
 				result.z = self.z * thing.z
 				newresult = (self.x * thing.x) + (self.y * thing.y) + (self.z * thing.z)
 				return newresult
+		def lerp(self, thing):
+				result = Vector3(0,0,0)
+				result.x = self.x + 0.5 * (thing.x - self.x)
+				result.y = self.y + 0.5 * (thing.y - self.y)
+				result.z = self.z + 0.5 * (thing.z - self.z)
+				return result
+class Vector4():
+		def __init__(self,ax,ay,az,ar):
+				self.x = ax
+				self.y = ay
+				self.z = az	
+				self.r = ar
+		#This is the print fuction for Vector 4		
+		def printer(self):
+				print(self.x, self.y, self.z, self.r)
+		#This is the Normalization fuction for Vector 4	
+		def Norm(self):
+				result = Vector4(0,0,0,0)
+				magresult = sqrt((self.x * self.x) + (self.y * self.y) + (self.z * self.z) + (self.r * self.r))
+				result.x = self.x/magresult
+				result.y = self.y/magresult
+				result.z = self.z/magresult
+				result.r = self.r/magresult
+				return result
 				
-		#def lerp(self,other,per):
-                #result = Vector(0,0,0)
-                #result.x = self.x + (per * (other.x - self.x))
-                #result.y = self.y + (per * (other.y - self.y))
-                #result.z = self.z + (per * (other.z - self.z))
-                #return result
-			    
 
-				
-				
-a = Vector3(2,2,5)
-b = Vector3(4,2,0)
-c = Vector3(0,0,0)
-
-
-print("Vector 1 consists of (2,2,5)")
-print("Vector 2 consists of (4,2,0)")
-print(" ")
-c = a + b
-print("Vector 1 + Vector 2 = ")
-c.printer()
-
-c = a - b
-print("Vector 1 - Vector 2 = ")
-c.printer()
-
-c = a * b
-print("Vector 1 * Vector 2 = ")
-c.printer()
-
-print("Vector 1's magnitude is ",a.Mag())
-print("Vector 2's magnitude is ",b.Mag())
-
-print("Vector 1's Dot Product is ",a.DProd(b))
-print("Vector 2's Dot Product is ",b.DProd(b))
-
-#print("Lerp: ")
-#result = a.lerp(b,.5)
-#result.printer()
-#print(" ")
-
-
-#def HexColor(object):
-                                #red = int(object[:2], 16)
-                                #green = int(object[2:4], 16)
-                                #blue = int(object[4:6], 16)
-                                #alpha = int(object[6:], 16)
-                                #print(red,green,blue,alpha)
