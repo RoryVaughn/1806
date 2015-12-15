@@ -1,6 +1,8 @@
 #include "GameLoop.h"
 #include <Math.h>
 #include <ctime>
+#include <string>
+using namespace std;
 float currentTime = clock();
 float previousTime = currentTime;
 int deltaTime;
@@ -8,6 +10,10 @@ int Onemoveup;
 int Onemovedown;
 int Twomoveup;
 int Twomovedown;
+
+
+
+
 float PlayOneX = 1500;
 float PlayTwoX = 1500;
 float PlayOneY = 600;
@@ -18,8 +24,15 @@ float PlayTwoY = 0;
 	int dg = 50;
 	float p = 200.0f;
 	int f;
-	int block = (200 - (PlayOneY - PlayTwoY));			
+	float block = (200 - (PlayOneY - PlayTwoY));			
 	int y = 1;
+	struct Square
+	{
+		string name;
+		float Xvalue;
+		float Yvalue;
+		
+	};
 void GameLoop::Loop()
 {
 	while (m_bRunning)
@@ -89,7 +102,43 @@ void GameLoop::Loop()
 
 			currentTime = clock();
 			deltaTime = (currentTime - previousTime) / 2;
+			Square RedThing;
+			RedThing.Xvalue = 800;
+			RedThing.Yvalue = 300;
 
+			Square Box1;
+			Box1.Xvalue = 1400;
+			Box1.Yvalue = 300;
+
+			Square Box2;
+			Box2.Xvalue = 500;
+			Box2.Yvalue = 700;
+
+			Square Box3;
+			Box3.Xvalue = 600;
+			Box3.Yvalue = 900;
+			Square Box4;
+			Box4.Xvalue = 200;
+			Box4.Yvalue = 300;
+			Square Box5;
+			Box5.Xvalue = 900;
+			Box5.Yvalue = 900;
+			Square Box6;
+			Box6.Xvalue = 100;
+			Box6.Yvalue = 100;
+			Square Box7;
+			Box7.Xvalue = 600;
+			Box7.Yvalue = 500;
+			Square Box8;
+			Box8.Xvalue = 800;
+			Box8.Yvalue = 300;
+			Square Box9;
+			Box9.Xvalue = 600;
+			Box9.Yvalue = 1500;
+			Square Box10;
+			Box10.Xvalue = 700;
+			Box10.Yvalue = 700;
+			
 			
 				//PLAYER ONE
 				Graphics::DrawRect({ PlayTwoX, PlayOneY }, { 50, 200 }, { 1, 241, 0, 255 });
@@ -97,8 +146,17 @@ void GameLoop::Loop()
 
 				//PLAYER TWO
 				Graphics::DrawRect({ PlayTwoX, PlayTwoY }, { 50, 200 }, { 0, 0, 244, 255 });
-				
-				
+				Graphics::DrawRect({ Box1.Xvalue, PlayOneY }, { 50, 200 }, {255, 0, 4, 255 });
+				Graphics::DrawRect({ Box1.Xvalue, PlayTwoY }, { 50, PlayTwoY }, { 255, 0, 244, 255 });
+				Graphics::DrawRect({ PlayTwoY, Box2.Yvalue }, { 50, 200 }, { 230, 150, 26, 255 });
+				Graphics::DrawRect({ Box3.Xvalue, PlayOneY }, { 50, 200 }, { 90, 25, 244, 255 });
+				Graphics::DrawRect({ PlayOneY, Box4.Yvalue }, { PlayOneY, 200 }, { 255, 60, 244, 255 });
+				Graphics::DrawRect({ Box5.Xvalue, PlayTwoY }, { 50, 200 }, { 180, 150, 244, 255 });
+				Graphics::DrawRect({ PlayOneY, Box6.Yvalue }, { 50, 200 }, { 255, 70, 244, 255 });
+				Graphics::DrawRect({ Box7.Xvalue, PlayOneY }, { 50, PlayOneY }, { 100, 150, 244, 255 });
+				Graphics::DrawRect({ PlayTwoY, Box8.Yvalue }, { 50, 200 }, { 30, 255, 244, 255 });
+				Graphics::DrawRect({ PlayTwoY, PlayTwoY }, { 50, 200 }, { 255, 60, 244, 255 });
+				Graphics::DrawRect({ Box10.Xvalue, PlayOneY }, { PlayTwoY, 200 }, { 200, 150, 244, 255 });
 				//BALL
 				
 				
@@ -121,8 +179,6 @@ void GameLoop::Loop()
 				
 				//boolian checks that make the panels move
 			
-
-
 
 			if (Onemoveup == 1)
 			{
@@ -157,33 +213,21 @@ void GameLoop::Loop()
 			PlayTwoY += 20;
 		}
 
-
-
-
-
-
-
-
-
-
-
 		
 		
 
-		if ((PlayTwoY <= PlayOneY + 200 ) && (PlayOneY <= PlayTwoY + 200) && (PlayOneY <= PlayTwoY + 200) && (PlayTwoY >= PlayOneY + 200))
+		
+		if ((PlayTwoY <= PlayOneY + 200 ) && (PlayOneY <= PlayTwoY + 200) || (PlayOneY <= PlayTwoY + 200) && (PlayTwoY >= PlayOneY + 200))
 			
 			{
-				Graphics::DrawRect({ 1100, PlayOneY}, { 50 , block }, { 0, 255, 255, 255 });
+				Graphics::DrawRect({ 1100, PlayTwoY}, { 50 , block }, { 0, 255, 255, 255 });
 			}
 		/*if ((PlayOneY <= PlayTwoY + 200) && (PlayTwoY <= PlayOneY + 200))
 
 			{
 				Graphics::DrawRect({ 1300, PlayTwoY}, { 50 , 200 - (PlayTwoY - PlayOneY) }, { 0, 255, 255, 255 });
 			}*/
-if (block >= 200)
-		{
-			block = 200;
-		}
+
 
 
 
